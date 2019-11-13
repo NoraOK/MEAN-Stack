@@ -1,0 +1,130 @@
+<script>
+ var Suits = {
+    1: "Heart",
+    2: "Diamond",
+    3: "Spades",
+    4: "Clubs"
+}
+
+var Values = {
+    1: "Ace",
+    2: "Two",
+    3: "Three",
+    4: "Four",
+    5: "Five",
+    6: "Six",
+    7: "Seven",
+    8: "Eight",
+    9: "Nine",
+    10: "Ten",
+    11: "Jack",
+    12: "Queen",
+    13: "King",
+}
+
+var Numbers = {
+    1:1,
+    2:2,
+    3:3,
+    4:4,
+    5:5,
+    6:6,
+    7:7,
+    8:8,
+    9:9,
+    10:10,
+    11:11,
+    12:12,
+    13:13
+}
+
+class Card{
+    constructor(suit, value){
+        this.suit = Suits[suit];
+        this.value = Values[value];
+        this.number = Numbers[value];
+    }
+    show(){
+        console.log(`Suit: ${this.suit}, Value: ${this.value}`)
+    }
+}
+
+class Deck{
+    constructor(suit, value){
+        this.cards = [];
+        var count = 0;
+        for(var i=1; i<5; i++){
+            for(var j=1; j<14; j++){
+                const card = new Card(i,j);
+                this.cards.push(card);
+                card.show();
+            }
+        }
+    }
+ 
+    shuffle(){
+        var m = this.cards.length, t, i;
+
+        while(m){
+            i= Math.floor(Math.random() * m--);
+            t = this.cards[m];
+            this.cards[m] = this.cards[i];
+            this.cards[i] = t
+        }
+
+        return this.cards;
+
+    }
+
+    reset(){
+        var count = 0;
+        for(var i=1; i<5; i++){
+            for(var j=1; j<14; j++){
+                const card = new Card(i, j);
+                this.cards[card] = card;
+                card.show();
+                count++
+            }
+        }
+    }
+    deal(){
+        return this.cards.pop();
+        console.log(player.hand)
+    }
+}
+
+class Player{
+    constructor(name){
+        this.name = name;
+        this.hand = [];
+    }
+
+    takeCard(deck){
+        this.hand.push(deck.deal())
+        console.log(this.hand);
+
+    }
+
+    discardCard(){
+        this.hand.pop()
+        console.log(this.hand);
+    }
+
+}
+
+const game= new Deck;
+const player= new Player('Jimbo')
+console.log(game.cards.suit);
+console.log(game.shuffle());
+console.log(player.name);
+player.takeCard(game);
+player.takeCard(game);
+player.takeCard(game);
+player.takeCard(game);
+console.log(player.hand);
+player.discardCard(game);
+console.log(game)
+
+
+
+</script>

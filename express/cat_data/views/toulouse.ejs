@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Toulouse</title>
+</head>
+<body>
+    <h1>Meet Toulouse!</h1>
+    <img src="/images/cat1.jpeg" alt="" width="800 px">
+
+    <p>Name: <%=  cats[0].name %> </p>
+    <p>Favorite Food: <%=  cats[0].fav_food %> </p>
+    <p>Favorite Sleeping Spots:
+        <% for(var ss of cats[0].sleep_spots) { %>
+            <ul>
+                <li><%= ss %></li>
+            </ul>
+        <% } %>
+    </p>
+
+</body>
+</html>

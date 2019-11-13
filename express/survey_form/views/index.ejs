@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Survey</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container col-8" align=center>
+        <div class="jumbotron">
+            <h1>Coding Dojo Survey</h1>
+            <form action="/results" method="post" class="form_control">
+                <p>Your Name:</p> 
+                <input type="text" name="name" class="form-control">
+                <p>Your Dojo Location:</p>
+                <select name="location" class="form-control">
+                        <option value="Oakland">Oakland</option>
+                        <option value="San Jose">San Jose</option>
+                        <option value="Seattle">Seattle</option>
+                </select>
+                <p>Your Favorite Language:</p>
+                <select name="language" class="form-control">
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="Java">Java</option>
+                        <option value="Python">Python</option>
+                </select>
+                <p>Comment (optional):</p>
+                <p><textarea name="comment" id="" cols="30" rows="10" class="form-control">Write your comments here!</textarea></p>
+                <input type="submit" value="Submit" class="btn btn-outline-secondary">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

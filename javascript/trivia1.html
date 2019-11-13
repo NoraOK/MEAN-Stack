@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Trivia</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="http://code.jquery.com/jquery-3.4.1.js"   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="   crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $('input').click(function(){
+                $.get("https://opentdb.com/api.php?amount=10&category=11&type=multiple", trivia)
+                function trivia(data) {
+                    var trivia_html = ""
+                    for (i in data.results) {
+                        console.log(data.results[i]);
+                        trivia_html += "<p>" + data.results[i].question + "</p>"
+                        trivia_html += "<select>"
+                        trivia_html += "<option>" + data.results[i].correct_answer + "</option>"
+                            for (j in data.results[i].incorrect_answers) {
+                                trivia_html += "<option>" + data.results[i].incorrect_answers[j] + "</option>"
+                            }
+                        trivia_html += "</select>"
+
+                        $(".display").html("<div>" +trivia_html+"</div>")
+                    }
+                }  
+            })         
+        });
+    </script>
+</head>
+<body>
+    <input type="submit" class="btn btn-outline-primary">
+    <div class="card display"></div>
+</body>
+</html>

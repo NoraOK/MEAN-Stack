@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quotes | Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container col-8">
+        <div class="jumbotron">
+            <h1>Welcome to Quoting Dojo</h1>
+            <form action="/quotes" method="POST">
+                <p>Your name:<input type="text" name="name" class="form-control"></p>
+                <% if (messages.name){ %>
+                    <p class="alert alert-danger"><%= messages.name[0] %></p>
+                <%}%>
+                <p>Your quote:<textarea name="quote" class="form-control"></textarea></p>
+                <% if (messages.quote){ %>
+                    <p class="alert alert-danger"><%= messages.quote[0] %></p>
+                <%}%>
+                <p><input type="submit" value="Add My Quote!" class="btn btn-outline-primary"></p>
+            </form>
+            <a href="/skip" class="btn btn-outline-primary">Skip to Quotes!</a>
+
+        </div>
+    </div>
+</body>
+</html>

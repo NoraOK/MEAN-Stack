@@ -1,0 +1,223 @@
+<script>
+// //1
+// // console.log(hello);                                   
+// // var hello = 'world';    
+
+// var hello = "world"
+// console.log(hello)
+// </script>
+
+ <script>
+// //2
+// // var needle = 'haystack';
+// // test();
+// // function test(){
+// // 	var needle = 'magnet';
+// // 	console.log(needle);
+// // // }
+
+// console.log("NOW: ");
+// console.log("Declaring and assigning variable 'ninja'.");
+// var ninja = 'Libby';
+// setTimeout( function myCallbackFunction(){
+//   console.log("LATER: ")
+//   console.log(ninja, "LATER"); }, 2000
+// );
+// console.log("Printing ninja value.");
+// console.log(ninja, "NOW");
+
+// function makePasta(pasta, makeSauce) {
+//   console.log("Boiling water");
+//   console.log("Putting " + pasta + " pasta in the water");
+//   // create a variable for sauce!
+//   var sauce = makeSauce();          // invoke makeSauce, our callback
+//   console.log("Mixing sauce");
+//   console.log("Pasta is done!");
+//   return pasta + " Pasta with " + sauce + " sauce! Voila!";
+// }
+// function makePesto() {
+//   console.log("Making Pesto");
+//   return "pesto";
+// }
+// function makeAlfredo() {
+//   console.log("Making Alfredo");
+//   return "alfredo";
+// }
+// // we pass the whole makePesto recipe to makePasta!
+// console.log(makePasta("Penne", makePesto));
+// // notice lack of parentheses after makePesto.
+// // Remember: we want to pass the function, not execute it and pass a return value.
+// console.log(makePasta("Farfalle", makeAlfredo));
+
+// function personConstructor(name, age) {
+//     // an object literal that will be returned
+//     var person = {};
+//     // attributes of a person
+//     person.name = name;
+//     person.age = age;
+//     // when attached to an object or instance, functions are called 'methods'.
+//     // this is our first method, greet
+//     person.greet = function(){
+//         console.log("Hello my name is " + person.name + " and I am " + person.age + " years old!");
+//     }
+//     // finally, this function must return an instance
+//     return person;
+// }
+// // create the 'steve' instance, run greet
+// var steve = personConstructor("Steve", 27);
+// steve.greet();
+// // create the 'anika' instance, run greet. note that it is different.
+// var anika = personConstructor("Anika", 33);
+// anika.greet();
+// // finally note how we can refine the greet method for any particular instance
+// var emily = personConstructor("Emily", 22);
+// emily.greet = function() {
+//     console.log("I am the greatest, ever!");
+// };
+// emily.greet();
+
+// the naming convention for Classes and Object Constructors is that they're capitalized and singular
+
+// // parent Dot class
+// class Dot {
+//     constructor(x, y) {
+//         this.x = x;
+//         this.y = y;
+//     }
+//     showLocation() {
+//         console.log(`This ${ this.constructor.name } is at x ${this.x} and y ${this.y}`);
+//     }
+// }
+// // child Circle class
+// class Circle extends Dot {
+//     constructor(x, y, radius) {
+//         super(x, y);
+//         this.radius = radius;
+//     }
+// }
+
+// const circle1 = new Circle(33, 33, 33);
+// // same attributes as a Dot, plus a radius
+// console.log(circle1);
+// // and Circles can access Dot methodscopy
+// circle1.showLocation();
+
+// function leadBootcamp(language, leader){
+//     var outcome = leader(language);
+//     console.log(outcome);
+// }
+// function Mike(language){
+//   var languages={
+//     'javascript':'successful leader',
+//     'PHP':'successful leader',
+//     'Python':'successful leader',
+//     'Ruby':'successful leader',
+//   }
+//   if(languages[language]){
+//     return languages[language];
+//   }
+//   else {
+//     return "maybe not yet";
+//   }
+// }
+// function Charlie(language){
+//   var languages={
+//     'javascript':'successful leader',
+//     'PHP':'successful leader',
+//     'Python':'successful leader',
+//     'Ruby':'successful leader',
+//   }
+//   if(languages[language]){
+//     return languages[language];
+//   }
+//   else {
+//     return "maybe not yet";
+//   }
+// }
+// function Jimmy(language){
+//   var languages={
+//     'javascript':'successful leader',
+//     'PHP':'successful leader',
+//     'Python':'successful leader',
+//     'Ruby':'successful leader',
+//     'iOS':'successful leader',
+//     'java_android':'successful leader',
+//   }
+//   if(languages[language]){
+//     return languages[language];
+//   }
+//   else {
+//     return "maybe not yet";
+//   }
+// }
+// leadBootcamp('java_android', Mike);
+// leadBootcamp('java_android', Charlie);
+// leadBootcamp('java_android', Jimmy);
+
+//simulated really slow DB call.
+//simulated really slow DB call.
+// function getStuffFromDatabase(callback){
+//   var data;
+//   var myTimer = setTimeout(function(){
+//     if (typeof(callback) == 'function'){
+//       data = [{name:'Todd'},{name:'Michael'},{name:'Portia'}];
+//       callback(data);
+//     }
+//   }, 10000);
+//   return data;
+// }    
+// // ************CHANGES HERE **************
+// function requestDataFromDatabase(){
+//   var data = getStuffFromDatabase(function myCallback(data){ // ooh shiny callback!.. when is it invoked???
+//     console.log(data, "ASynchronous");
+//     for (var i = 0; i < data.length; i ++){
+//       console.log(data[i].name);
+//     }
+//   });
+//   console.log(data, "Synchronous");
+// }
+// //***************** END CHANGES **********************
+// function catchFly(){
+//   console.log('I just caught a fly!');
+// }
+// requestDataFromDatabase();
+// // keep running my program!
+// console.log('Hello');
+// catchFly();
+// //etc.
+
+function getStuffFromDatabase(resolve,reject){
+    var data = "whee"
+    setTimeout(function(){
+      // if (typeof(callback) == 'function'){
+        data = [{name:'Todd'},{name:'Michael'},{name:'Portia'}];
+        resolve(data);
+      // }
+    }, 1000);
+    // reject(); 
+    return data;
+}
+function requestDataFromDatabase(){
+  console.log('running');
+  //creates promise
+  var data = new Promise(function(resolve,reject){
+    getStuffFromDatabase(resolve,reject); // kind of like a shiny callback
+  });
+  // if promise is successful (keeps me from putting all the logic in the callback)
+  data.then(function(data){
+    console.log(data, "ASynchronous");
+    for (var i = 0; i < data.length; i ++){
+      console.log(data[i].name);
+    }
+  });
+  data.catch(function(){
+    console.log('failure');
+  })
+  console.log('end');
+}
+requestDataFromDatabase();
+
+ 
+
+
+</script>

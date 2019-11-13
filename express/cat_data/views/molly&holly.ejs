@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Molly & Holly</title>
+</head>
+<body>
+    <h1>Meet Molly & Holly!</h1>
+    <img src="/images/cat2.jpeg" alt="" width="800 px">
+
+    <p>Name: <%=  cats[1].name %> </p>
+    <p>Favorite Food: <%=  cats[1].fav_food %> </p>
+    <p>Favorite Sleeping Spots:
+        <% for(var ss of cats[1].sleep_spots) { %>
+            <ul>
+                <li><%= ss %></li>
+            </ul>
+        <% } %>
+    </p>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Message Board</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container col-8" align=center>
+        <h1>The Dojo Message Board</h1>
+        <form action="/post_message" method="POST">
+            <p align=left>Name:</p>
+            <p><input type="text" name="msg_name" class="form-control form-control-lg"></p>
+            <p align=left>Message:</p>
+            <p><textarea name="msg_content" class="form-control form-control-lg"></textarea></p>
+            <input type="submit" class="btn btn-lg btn-outline-primary" value="Post Message">
+        </form>
+        <% if (messages.msg_name){ %>
+            <p class="alert alert-danger"><%= messages.msg_name[0] %></p>
+        <%}%>
+        <% if (messages.msg_content){ %>
+            <p class="alert alert-danger"><%= messages.msg_content[0] %></p>
+        <%}%>
+        <% for (var message of msgs){ %>
+            <p align=left><b><%= message.msg_name %></b></p>
+            <p align=left><%= message.msg_content %></p>
+            <p><a href="/delete/<%= message._id %>" class="btn btn-sm btn-outline-primary"> Delete Message</a></p>
+            <% for (var comment of message.comments){ %>
+                <p align=left><b><%= comment.comment_name %></b></p>
+                <p align=left><%= comment.comment_content %></p>
+            <% } %>
+            <form action="/post_comment/<%= message._id %>" method="POST">
+                <p align=left>Name:</p>
+                <p><input type="text" name="comment_name" class="form-control form-control-sm"></p>
+                <p align=left>Comment:</p>
+                <p><textarea name="comment_content" class="form-control form-control-sm"></textarea></p>
+                <input type="submit" class="btn btn-outline-secondary" value="Post Comment">
+            </form>
+            <% if (messages.comment_name){ %>
+                <p class="alert alert-danger"><%= messages.comment_name[0] %></p>
+            <%}%>
+            <% if (messages.comment_content){ %>
+                <p class="alert alert-danger"><%= messages.comment_content[0] %></p>
+            <%}%>
+        <% } %>
+    </div>
+</body>
+</html>  

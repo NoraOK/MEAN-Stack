@@ -1,0 +1,49 @@
+<script>
+    function Ninja(name, health){
+        var privateSpeed = 3;
+        var privateStrength = 3;
+        this.health = health;
+        this.name = name;
+        
+        this.sayName = function(){
+            console.log("My ninja name is"+this.name+".")
+        };
+        this.showStats = function(){
+            console.log ("Name: "+this.name+", Strength: "+privateStrength+", Speed: "+privateSpeed+", Health: "+this.health);
+        }
+        this.drinkSake = function(){
+            health += 10;
+            return this;
+        }
+        this.punch = function(other_ninja){
+            if(other_ninja instanceof Ninja){
+                other_ninja.health -= 5;
+                console.log(other_ninja.name+"was punched by "+this.name+"and lost 5 Health!");
+            }
+            else{
+                console.log("Your opponent doesn't exist");
+            }
+        }
+        this.kick = function(other_ninja){
+            if(other_ninja instanceof Ninja){
+                other_ninja.health -= (15 * (privateStrength));
+                console.log(other_ninja.name+"was kicked by "+this.name);
+            }
+            else{
+                console.log("Your opponent doesn't exist");
+            }
+        }
+    }
+
+    var ninja1 = new Ninja("Bob", 100);
+    var ninja2 = new Ninja("Jim", 100);
+    ninja1.sayName();
+    ninja1.drinkSake();
+    ninja1.showStats();
+    ninja1.punch(ninja2);
+    ninja2.showStats();
+    ninja2.kick(ninja1);
+    ninja1.showStats();
+    ninja1.punch("ninja5");
+
+</script>

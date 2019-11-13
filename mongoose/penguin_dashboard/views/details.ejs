@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Penguins!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container col-8" align=center>
+        <h1>Meet <%= penguin.name %> !</h1>
+        <div class="jumbotron">
+            <p>Name: <%= penguin.name %></p>
+            <p>Age: <%= penguin.age %></p>
+            <p>Favorite Movie: <%= penguin.fav_movie %></p>
+            <p>Favorite Food:<%= penguin.fav_food %></p>
+            <p><a href="/edit/<%=penguin.id%>" class="btn btn-outline-primary">Edit</a>
+            <a href="/" class="btn btn-outline-primary">All Penguins</a></p>
+        </div>
+    </div>
+</body>
+</html>

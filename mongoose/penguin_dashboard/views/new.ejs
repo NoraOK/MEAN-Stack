@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Penguins!</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container col-8" align=center>
+        <h1>Create Penguin Here!</h1>
+        <div class="jumbotron">
+            <form action="/add_new" method="POST">
+                <p>Name: <input type="text" name="name" class="form-control"></p>
+                <p>Age: <input type="text" name="age" class="form-control"></p>
+                <p>Favorite Movie: 
+                    <select name="fav_movie" id="" class="form-control">
+                        <option value="Ice Age">Ice Age</option>
+                        <option value="Titanic">Titanic</option>
+                        <option value="March of the Penguins">March of the Penguins</option>
+                        <option value="Free Willy">Free Willy</option>
+                    </select>
+                </p>
+                <p>Favorite Food: <input type="text" name="fav_food" class="form-control"></p>
+                <p><input type="submit" class="btn btn-outline-primary">
+                <a href="/" class="btn btn-outline-primary">Cancel</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

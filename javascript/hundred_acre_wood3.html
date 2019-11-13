@@ -1,0 +1,144 @@
+<script>
+
+    var heffalumps = {
+        character: "Heffalump",
+        greet: function(){
+            console.log("Hi I'm a heffalump!");},
+        honey: false,
+        };
+    var eeyore = {
+        character: "Eeyore",
+        greet: function(){
+            console.log("I'm sad!");},
+        honey: false,
+        };
+    var kanga = {
+        character: "Kanga",
+        greet: function(){
+            console.log("Have you seen Roo?!");},
+        honey: false,
+        };
+    var tigger = {
+        character: "Tigger",
+        greet: function(){
+            console.log("The wonderful thing about Tiggers is Tiggers are wonderful things!");},
+        honey: false,
+        }
+    var chris = {
+        character: "Christopher Robin",
+        greet: function(){
+            console.log("Have you seen Pooh?!");},
+        honey: false,
+        };
+    var owl = {
+        character: "Owl",
+        greet: function(){
+            console.log("Have you seen Pooh?!");},
+        num: 6,
+        };
+    var piglet = {
+        character: "Piglet",
+        greet: function(){
+            console.log("I'm a lil piggy.");},
+        honey: false,
+        };
+    var rabbit = {
+        character: "Rabbit",
+        greet: function(){
+            console.log("Get out of my garden!");},
+        honey: false,
+        };
+    var gopher = {
+        character: "Gopher",
+        greet: function(){
+            console.log("CARROTS!!!");},
+        honey: false,
+        };
+    var bees = {
+        character: "Bees",
+        greet: function(){
+            console.log("BZZZZZZZZ");},
+        honey: false,
+        };
+    var pooh = {
+        character: "Winnie the Pooh",
+        greet: function(){
+            console.log("I love my friends!");},
+        honey: false,
+        };
+    var player = {
+        location: tigger}
+
+    eeyore.south = kanga;
+    kanga.north = eeyore;
+    heffalumps.west = eeyore; 
+    eeyore.east = heffalumps;
+    chris.north = kanga;
+    kanga.south = chris;
+    owl.east = chris;
+    chris.west = owl;
+    owl.south = piglet;
+    piglet.north = owl;
+    chris.east = rabbit;
+    rabbit.west = chris;
+    gopher.west = rabbit;
+    rabbit.east = gopher;
+    bees.north = rabbit;
+    rabbit.south = bees;
+    pooh.east = bees;
+    bees.east = pooh;
+    pooh.north = chris;
+    chris.south = pooh;
+    pooh.west = piglet;
+    piglet.east = pooh;
+    pooh.south = tigger;
+    tigger.north = pooh;
+
+    function pickUp(){
+        if(player.location == bees){
+            player.honey = true;
+            console.log("You've got honey!")
+        }else{
+            console.log("There's no honey at this location.")
+        }
+    }
+
+    function mission(){
+        charList = [eeyore, kanga, heffalumps, chris, rabbit, piglet, pooh, tigger, gopher,owl]
+        var rand = Math.floor(Math.random()* Math.floor(charList.length));
+        recipient = charList[rand];
+        recipient.objective = true;
+        return recipient.character+" is looking for honey! Can you help?"
+    }
+
+    function drop(){
+        if(player.location == recipient.character && player.honey == true){
+            player.honey = false;
+            console.log("Congratulations! You delivered honey to "+player.location.character);
+        } 
+        if(player.location == recipient.character && player.honey == false){
+            console.log("Whoops you don't have any honey! Go pick some up from the bees, but be careful!");
+        }
+        if(player.location !== recipient.character && player.honey == true){
+            console.log("This isn't who needed honey!");
+        }
+    }
+
+    function Move(direction){
+        if(player.location[direction] === undefined){
+            return "You may not go that way!";
+        }else{
+            player.location = player.location[direction];
+            console.log( "You are now at " +player.location.character+ "'s house!'")
+            player.location.greet();
+        
+        }
+    }
+
+
+console.log(mission())
+
+</script>
+<body>
+<img src="hundredacrewood.png" alt="">
+</body>

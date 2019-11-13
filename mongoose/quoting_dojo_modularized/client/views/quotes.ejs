@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quotes | Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container col-8">
+        <div class="jumbotron">
+            <h1>Here are all of the amazing quotes!</h1>
+            <% for(var user of users){ %>
+                <p><b><%= user.name %></b></p>
+                <p>"<%= user.quote %>"</p>
+                <p><em><%= user.createdAt %></em></p>
+            <% } %>
+            <a href="/clear" class="btn btn-outline-primary">Clear Quotes</a>
+            <a href="/back" class="btn btn-outline-primary">Back To Home</a>
+        </div>
+    </div>
+</body>
+</html>
