@@ -1,0 +1,18 @@
+.container{
+    border: 10px orange solid;
+    border-radius: 10px;
+}
+
+.for{
+    border: 10px blue solid;
+    border-radius: 10px;
+    padding: 50px;
+    margin: 50px;
+}
+
+.desc{
+    border: 10px forestgreen solid;
+    border-radius: 10px;
+    padding: 50px;
+    margin: 50px;
+}

@@ -1,0 +1,54 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+<head> <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></head>
+
+  <body>
+    <div class="container col-8" align=center>
+      <h1>Restful Tasks API</h1>
+      <div class="for">
+        <button (click)="getTasksFromService()" class="btn btn-primary btn-lg"> Show All Tasks </button>
+        <h3 *ngFor="let task of tasks">
+          {{task.title}} 
+          <button (click)="showTask(task)" class="btn btn-secondary btn-sm">SHOW</button>
+          <button (click)="removeTask(task._id)" class="btn btn-secondary btn-sm">DELETE</button>
+          <button (click)="showEditForm(task)" class="btn btn-secondary btn-sm">EDIT</button>
+        </h3>
+      </div>
+      <hr>
+      <h4 *ngIf="oneTask"><div class="desc"><h3>{{oneTask.title}}</h3>{{oneTask.description}}</div></h4>
+    <form (submit)="onSubmit()">
+      <p> {{ newTask | json }}</p>
+      <p> Title: <input type="text" name="newTask.title" [(ngModel)]="newTask.title"></p>
+      <p> Description:<input type="text" name="newTask.description" [(ngModel)]="newTask.description"></p>
+      <input type="submit" value="Create Task"  class="btn btn-primary">
+    </form>
+
+    <form *ngIf="editTask" (submit)="updateTask()">
+      {{ editTask | json }}
+      <p> Title: <input type="text" name="editTask.title" [(ngModel)]="editTask.title"></p>
+      <p> Description:<input type="text" name="editTask.description" [(ngModel)]="editTask.description"></p>
+      <input type="submit" value="EDIT Task"  class="btn btn-primary">
+    </form>
+  </div>
+  </body>
+
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+
+<router-outlet></router-outlet>
