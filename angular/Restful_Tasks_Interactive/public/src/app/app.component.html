@@ -23,7 +23,7 @@
         </h3>
       </div>
       <hr>
-      <h4 *ngIf="oneTask"><div class="desc"><h3>{{oneTask.title}}</h3>{{oneTask.description}}</div></h4>
+      <!-- <h4 *ngIf="oneTask"><div class="desc"><h3>{{oneTask.title}}</h3>{{oneTask.description}}</div></h4> -->
     <form (submit)="onSubmit()">
       <p> {{ newTask | json }}</p>
       <p> Title: <input type="text" name="newTask.title" [(ngModel)]="newTask.title"></p>
@@ -37,6 +37,8 @@
       <p> Description:<input type="text" name="editTask.description" [(ngModel)]="editTask.description"></p>
       <input type="submit" value="EDIT Task"  class="btn btn-primary">
     </form>
+  
+  <app-task *ngIf="oneTask" [showTask]="oneTask"></app-task>
   </div>
   </body>
 
