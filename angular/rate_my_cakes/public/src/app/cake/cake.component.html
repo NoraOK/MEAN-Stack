@@ -1,0 +1,10 @@
+<div class="container col-8">
+    <h3> Baked by {{getOneCake.baker}}</h3>
+    <p> Avg. Rating: {{getOneCake.avgRating}}</p>
+    <img src="{{getOneCake.image}}" alt="" width=100px>
+    <div *ngFor="let rating of getOneCake.ratings">
+        <h5>Comment & Rating:</h5>
+        <p>{{rating.comment}}</p>
+        <p>{{rating.rating}} stars</p>
+    </div>
+</div>

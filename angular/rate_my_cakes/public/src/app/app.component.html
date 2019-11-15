@@ -1,0 +1,57 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<head><link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></head>
+
+<body>
+<div class="container">
+  <h1>Rate my cakes</h1>
+  <div class="upperbody">
+    <div class="submit jumbotron col-4">
+      <h5>Submit a cake to be rated</h5><hr>
+        <form (submit)="createCakesFromService()">
+          <p>Baker name:</p>
+          <input type="text" name="newCake.baker" [(ngModel)]="newCake.baker" >
+          <p>Image url:</p>
+          <input type="text" name="newCake.image" [(ngModel)]="newCake.image">
+          <p><input type="submit"></p>
+        </form>
+    </div>
+    <div class="display col-7">
+      <div *ngFor="let cake of cakes">
+        <p>{{cake.baker}}</p>
+        <img src="{{cake.image}}" alt="" width=100px (click)="getOneCake(cake)">
+        <form (submit)="updateCake(cake)" class="form">
+          <select name="cake.newRating.rating" [(ngModel)]="cake.newRating.rating">
+            <option value="5">5 stars</option>
+            <option value="4">4 stars</option>
+            <option value="3">3 stars</option>
+            <option value="2">2 stars</option>
+            <option value="1">1 stars</option>
+          </select>
+          <p><textarea name="cake.newRating.comment" [(ngModel)]="cake.newRating.comment">Type you comment here!</textarea></p>
+          <p><input type="submit" value="Rate!"></p>
+        </form>
+      </div>
+    </div>
+    <app-cake *ngIf = "oneCake" [getOneCake]="oneCake" ></app-cake>
+  </div>
+</div>
+</body>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+
+
+<router-outlet></router-outlet>

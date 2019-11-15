@@ -1,0 +1,14 @@
+.submit{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.display{
+    display: inline-block;
+    overflow: scroll;
+    height: 500px;
+}
+
+.cake{
+    display: block;
+}
