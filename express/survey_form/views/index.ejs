@@ -5,29 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Survey</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script type ="text/javascript">
+        
+        var socket = io(); //1
+
+        $(document).ready(function (){
+    
+            $('#form').submit(function(){
+                socket.emit('posting_form', {
+                    name: $('#Name').val(), 
+                    location: $('#Location').val(),
+                    lang: $('#Lang').val(),
+                    comment: $('#Comment').val()
+                });
+                
+                return false;
+            });
+            socket.on('updated_message', function(msg) {
+                $('#msgboard').text("Name:"+ msg.name+", Location:"+msg.location+", Language:"+msg.lang+", Comment:"+msg.comment)
+                $('#randnum').text("Random number:"+ msg.randnum)
+
+                console.log(msg)
+            })
+        })
+    </script>
 </head>
+
 <body>
     <div class="container col-8" align=center>
+        <p id='msgboard'></p>
+        <p id="randnum"></p>
         <div class="jumbotron">
             <h1>Coding Dojo Survey</h1>
-            <form action="/results" method="post" class="form_control">
+            <form id="form" action="" class="form_control">
                 <p>Your Name:</p> 
-                <input type="text" name="name" class="form-control">
+                <input type="text" name="name" class="form-control" id="Name">
                 <p>Your Dojo Location:</p>
-                <select name="location" class="form-control">
+                <select name="location" class="form-control" id="Location">
                         <option value="Oakland">Oakland</option>
                         <option value="San Jose">San Jose</option>
                         <option value="Seattle">Seattle</option>
                 </select>
                 <p>Your Favorite Language:</p>
-                <select name="language" class="form-control">
+                <select name="language" class="form-control" id="Lang">
                         <option value="JavaScript">JavaScript</option>
                         <option value="Java">Java</option>
                         <option value="Python">Python</option>
                 </select>
                 <p>Comment (optional):</p>
-                <p><textarea name="comment" id="" cols="30" rows="10" class="form-control">Write your comments here!</textarea></p>
+                <p><textarea name="comment" cols="30" rows="10" class="form-control" id="Comment">Write your comments here!</textarea></p>
                 <input type="submit" value="Submit" class="btn btn-outline-secondary">
             </form>
         </div>
